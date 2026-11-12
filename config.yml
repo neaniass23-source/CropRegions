@@ -1,0 +1,63 @@
+# ===================== CropRegions =====================
+
+# Cultivos que se REPLANTAN solos al romperlos (solo se pueden romper maduros).
+replant-crops:
+  - WHEAT
+  - CARROTS
+  - POTATOES
+  - BEETROOTS
+  - NETHER_WART
+
+# Cultivos que se pueden romper pero NO se replantan (el bloque desaparece).
+single-crops:
+  - MELON
+  - PUMPKIN
+
+# Efectos al cosechar
+effects:
+  particles: true
+  sound: true
+
+# ---------- MODO MINION ----------
+# Cosecha y replanta automaticamente los cultivos maduros de la region,
+# sin que nadie los rompa. Los drops (vanilla + custom) caen al suelo.
+auto-harvest:
+  enabled: false
+  scan-interval-ticks: 20     # cada cuanto se ejecuta el escaneo (20 = 1 seg)
+  blocks-per-scan: 4000       # bloques revisados por escaneo (reparte la carga)
+
+# ---------- DROPS CUSTOM ----------
+# Se dan ADEMAS de los drops vanilla. Por cada cultivo puedes poner varios.
+# Campos: material, min, max, chance (0-100), name, lore, custom-model-data, commands
+# En commands puedes usar %player% (solo se ejecutan si lo rompe un jugador).
+custom-drops:
+  WHEAT:
+    - material: GOLD_NUGGET
+      min: 1
+      max: 2
+      chance: 10
+      name: "&6Espiga Dorada"
+      lore:
+        - "&7Un trigo muy especial."
+      # custom-model-data: 1001
+    - material: EXPERIENCE_BOTTLE
+      min: 1
+      max: 1
+      chance: 2
+      commands:
+        - "eco give %player% 50"
+  CARROTS:
+    - material: GOLDEN_CARROT
+      min: 1
+      max: 1
+      chance: 5
+  POTATOES:
+    - material: POISONOUS_POTATO
+      min: 1
+      max: 1
+      chance: 5
+
+# ---------- MENSAJES ----------
+messages:
+  deny: "&cSolo puedes romper los cultivos aqui."
+  immature: "&eEse cultivo todavia no esta maduro."

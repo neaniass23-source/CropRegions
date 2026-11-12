@@ -1,0 +1,17 @@
+name: CropRegions
+main: me.cropregions.CropRegionsPlugin
+version: ${project.version}
+api-version: '1.21'
+description: Regiones de cultivo con replantado automatico, drops custom y modo minion.
+commands:
+  cropregion:
+    description: Administra las regiones de cultivo
+    aliases: [cr, cultivos]
+    usage: /cropregion <wand|create|delete|list|reload>
+permissions:
+  cropregions.admin:
+    description: Administrar regiones
+    default: op
+  cropregions.bypass:
+    description: Poder romper/colocar cualquier bloque dentro de las regiones
+    default: op
